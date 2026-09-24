@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Assignment Management System</title>
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <header class="topbar">
+    <div class="brand">📚 Assignment Tracker</div>
+    <a href="architecture.html" style="color:#fff;font-size:13px;text-decoration:none;">Architecture</a>
+    <div id="userBox" class="user-box hidden">
+      <span id="userLabel"></span>
+      <button id="logoutBtn" class="btn btn-ghost">Log out</button>
+    </div>
+  </header>
+
+  <main>
+    <!-- AUTH VIEW -->
+    <section id="authView" class="card narrow">
+      <h2 id="authTitle">Sign in</h2>
+      <div id="authError" class="error hidden"></div>
+      <label class="field hidden" id="nameField">
+        Full name
+        <input type="text" id="authName" placeholder="Jane Doe" />
+      </label>
+      <label class="field">
+        Email
+        <input type="email" id="authEmail" placeholder="you@university.edu" />
+      </label>
+      <label class="field">
+        Password
+        <input type="password" id="authPassword" placeholder="••••••••" />
+      </label>
+      <label class="field hidden" id="roleField">
+        I am a
+        <select id="authRole">
+          <option value="student">Student</option>
+          <option value="professor">Professor</option>
+        </select>
+      </label>
+      <button id="authSubmit" class="btn btn-primary">Sign in</button>
+      <p class="switch">
+        <span id="authSwitchText">No account?</span>
+        <a href="#" id="authSwitch">Register</a>
+      </p>
+      <div class="hint">
+        <strong>Demo credentials</strong><br />
+        Professor: professor@demo.com / prof123<br />
+        Student: student@demo.com / student123
+      </div>
+    </section>
+
+    <!-- PROFESSOR VIEW -->
+    <section id="profView" class="hidden">
+      <div class="grid">
+        <div class="card">
+          <h2 id="assignFormTitle">Create assignment</h2>
+          <div id="assignError" class="error hidden"></div>
+          <input type="hidden" id="editingId" />
+          <label class="field">Title *<input type="text" id="aTitle" /></label>
+          <label class="field">Subject *<input type="text" id="aSubject" /></label>
+          <label class="field">Description<textarea id="aDesc" rows="3"></textarea></label>
+          <label class="field">Deadline *<input type="datetime-local" id="aDeadline" /></label>
+          <div class="row">
+            <button id="assignSubmit" class="btn btn-primary">Create</button>
+            <button id="assignCancel" class="btn btn-ghost hidden">Cancel edit</button>
+          </div>
+        </div>
+        <div class="card">
+          <h2>Assignments</h2>
+          <div id="profList"></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- STUDENT VIEW -->
+    <section id="studentView" class="hidden">
+      <div class="card">
+        <h2>My assignments</h2>
+        <p class="muted">Status is computed automatically from the server clock: On Time, Late, Missing, or Pending.</p>
+        <div id="studentList"></div>
+      </div>
+    </section>
+  </main>
+
+  <script src="app.js"></script>
+</body>
+</html>
